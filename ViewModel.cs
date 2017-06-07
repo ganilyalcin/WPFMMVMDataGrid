@@ -11,60 +11,35 @@ namespace WPFMMVMDataGrid
 {
     public class ViewModel : INotifyPropertyChanged
     {
+        public ViewModel()
+        {
+            this.MissingList = new ObservableCollection<MissingDataModel>
+            {
+                new MissingDataModel()
+                {
+                    ZNumber = 1,
+                    CashRegisterSerialNumber = "Serial1",
+                    DepartmentTotal = 0,
+                    DepartmentTotalVat = 0
+                },
+
+                new MissingDataModel()
+                {
+                    ZNumber = 2,
+                    CashRegisterSerialNumber = "Serial2",
+                    DepartmentTotal = 0,
+                    DepartmentTotalVat = 0
+                },
+            };
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<MissingDataModel> missingList;
-                
-        public ObservableCollection<MissingDataModel> MissingList
-        {
-            get
-            {
-                return GetList();
-            }
-
-            set
-            {
-                if (value == this.missingList)
-                {
-                    return;
-                }
-
-                this.missingList = value;
-                this.OnPropertyChanged();
-                this.OnPropertyChanged(nameof(this.MissingList));
-            }
-        }
-        
+        public ObservableCollection<MissingDataModel> MissingList { get; }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public ObservableCollection<MissingDataModel> GetList()
-        {
-            var list = new ObservableCollection<MissingDataModel>();
-
-            var md1 = new MissingDataModel()
-            {
-                ZNumber = 1,
-                CashRegisterSerialNumber = "Serial1",
-                DepartmentTotal = 0,
-                DepartmentTotalVat = 0
-            };
-
-            var md2 = new MissingDataModel()
-            {
-                ZNumber = 2,
-                CashRegisterSerialNumber = "Serial2",
-                DepartmentTotal = 0,
-                DepartmentTotalVat = 0
-            };
-
-            list.Add(md1);
-            list.Add(md2);
-
-            return list;
         }
     }
 
