@@ -24,5 +24,16 @@ namespace WPFMMVMDataGrid
         {
             InitializeComponent();
         }
+
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            ((ViewModel)this.DataContext).MissingList.Add(new MissingDataModel {
+                ZNumber = 3,
+                CashRegisterSerialNumber = "New item",
+                DepartmentTotal = 1,
+                DepartmentTotalVat = 1,
+                
+            });
+        }
     }
 }
