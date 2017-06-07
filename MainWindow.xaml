@@ -21,6 +21,6 @@
                             AutoGenerateColumns="True"                                      
                             ItemsSource="{Binding MissingList}">
         </DataGrid>
-        <Button x:Name="btnAddItem" Grid.Row="1" Content="Add Item" Click="btnAddItem_Click"></Button>
+        <Button x:Name="btnAddItem" Grid.Row="1" Content="Add Item" Command="{Binding AddItemToCollection}"></Button>
     </Grid>
 </Window>

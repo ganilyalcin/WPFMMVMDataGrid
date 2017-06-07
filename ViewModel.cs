@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace WPFMMVMDataGrid
 {
@@ -31,11 +32,23 @@ namespace WPFMMVMDataGrid
                     DepartmentTotalVat = 0
                 },
             };
+
+            this.AddItemToCollection = new MyCommand(x => this.MissingList.Add(new MissingDataModel
+            {
+                ZNumber  = 3,
+                CashRegisterSerialNumber = "Added Item",
+                DepartmentTotal = 1, 
+                DepartmentTotalVat = 1
+            }));
+            //this.AddNewItemCommand = new RelayCommand(_ => this.MissingList.Add(new ...));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<MissingDataModel> MissingList { get; }
+        public ICommand AddItemToCollection { get; }
+        
+
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
