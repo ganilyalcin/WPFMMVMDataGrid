@@ -18,7 +18,7 @@ namespace WPFMMVMDataGrid
         {
             get
             {
-                return this.missingList;
+                return GetList();
             }
 
             set
@@ -39,16 +39,39 @@ namespace WPFMMVMDataGrid
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public List<MissingDataModel> GetList()
+        {
+            var list = new List<MissingDataModel>();
+
+            var md1 = new MissingDataModel()
+            {
+                ZNumber = 1,
+                CashRegisterSerialNumber = "Serial1",
+                DepartmentTotal = 0,
+                DepartmentTotalVat = 0
+            };
+
+            var md2 = new MissingDataModel()
+            {
+                ZNumber = 2,
+                CashRegisterSerialNumber = "Serial2",
+                DepartmentTotal = 0,
+                DepartmentTotalVat = 0
+            };
+
+            list.Add(md1);
+            list.Add(md2);
+
+            return list;
+        }
     }
 
     public class MissingDataModel
     {
         public int ZNumber { get; set; }
         public string CashRegisterSerialNumber { get; set; }
-        public DateTime ZDateTime { get; set; }
         public decimal DepartmentTotal { get; set; }
         public decimal DepartmentTotalVat { get; set; }
-        public decimal CashAmount { get; set; }
-        public decimal CreditAmount { get; set; }
     }
 }
