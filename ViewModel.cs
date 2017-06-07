@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,9 +13,9 @@ namespace WPFMMVMDataGrid
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private List<MissingDataModel> missingList;
+        private ObservableCollection<MissingDataModel> missingList;
                 
-        public List<MissingDataModel> MissingList
+        public ObservableCollection<MissingDataModel> MissingList
         {
             get
             {
@@ -40,9 +41,9 @@ namespace WPFMMVMDataGrid
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public List<MissingDataModel> GetList()
+        public ObservableCollection<MissingDataModel> GetList()
         {
-            var list = new List<MissingDataModel>();
+            var list = new ObservableCollection<MissingDataModel>();
 
             var md1 = new MissingDataModel()
             {
@@ -75,3 +76,5 @@ namespace WPFMMVMDataGrid
         public decimal DepartmentTotalVat { get; set; }
     }
 }
+
+
